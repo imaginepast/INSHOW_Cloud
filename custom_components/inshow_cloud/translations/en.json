@@ -1,0 +1,103 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "INSHOW Cloud",
+        "description": "Sign in with the account you use in the INSHOW IoT app.",
+        "data": {
+          "email": "Email",
+          "password": "Password"
+        }
+      },
+      "reauth_confirm": {
+        "title": "Re-authenticate INSHOW Cloud",
+        "description": "The password for {email} is no longer valid. Enter the new password.",
+        "data": {
+          "password": "Password"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Cannot connect to the INSHOW cloud.",
+      "invalid_auth": "Invalid email or password.",
+      "no_devices": "No supported thermostats were found on this account.",
+      "unknown": "Unexpected error. Check the logs."
+    },
+    "abort": {
+      "already_configured": "This account is already configured.",
+      "reauth_successful": "Re-authentication was successful."
+    }
+  },
+  "entity": {
+    "sensor": {
+      "indoor_temperature": {
+        "name": "Indoor temperature"
+      },
+      "target_temperature": {
+        "name": "Target temperature"
+      },
+      "operating_status": {
+        "name": "Operating status",
+        "state": {
+          "away": "Away",
+          "idle": "Idle",
+          "heating": "Heating"
+        }
+      }
+    },
+    "binary_sensor": {
+      "heating_relay": {
+        "name": "Heating"
+      }
+    },
+    "climate": {
+      "thermostat": {
+        "state": {
+          "heat": "Heating",
+          "off": "Away"
+        },
+        "state_attributes": {
+          "hvac_action": {
+            "state": {
+              "off": "Away",
+              "idle": "Idle",
+              "heating": "Heating"
+            }
+          }
+        }
+      }
+    }
+  },
+  "exceptions": {
+    "invalid_auth": {
+      "message": "INSHOW authentication failed. Check the password."
+    },
+    "cannot_connect": {
+      "message": "Cannot reach the INSHOW cloud. Will retry."
+    },
+    "no_devices": {
+      "message": "No supported thermostats were found on this account. Add a device, then reload the integration."
+    },
+    "mqtt_connect_failed": {
+      "message": "Could not connect to the INSHOW MQTT broker ({error}). Will retry."
+    },
+    "mqtt_refused": {
+      "message": "The INSHOW MQTT broker refused the connection ({error}). It may not allow third-party clients for this account or device."
+    },
+    "not_connected": {
+      "message": "The INSHOW MQTT connection is down, so the command was not sent."
+    },
+    "command_failed": {
+      "message": "Sending the INSHOW command failed (code {rc})."
+    },
+    "hvac_mode_unsupported": {
+      "message": "This controller supports heating and away modes only."
+    },
+    "away_mode_locked": {
+      "message": "The target temperature cannot be changed while away mode is on. Switch back to heating mode first."
+    },
+    "sign_in_retry": {
+      "message": "The INSHOW server rejected the sign-in (attempt {attempt} of {max}). Retrying automatically; if it keeps happening you will be asked for the password again."
+    }
+  }
+}
